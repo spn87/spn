@@ -1,0 +1,1 @@
+<div style="text-align: center; margin-top: 100px; font-size: 13px;">Welcome to Photo management</div>

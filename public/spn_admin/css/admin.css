@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+body, td{font-size:13px; font-family: Tahoma, Geneva, sans-serif;line-height:1.125em;}
+div.left {float: left; width: 250px; border: 0px solid green;}
+div.left div { width: 100%; margin: 10px; border:1px dashed orange; min-height: 500px;}
+div.right {float: left; width: 700px; border:0px solid red;}
+div.right > div {margin:10px; width: 100%;}
+
+table th{background: #ccc;}
+table td {border:1px solid #c3c3c3; padding-left: 10px;}
+h2 {border-bottom: 1px solid #d4d4d4; margin:0px 0px 15px 0px; padding-bottom:5px;}
+
+table td.action {text-align:center;}
