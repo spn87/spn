@@ -6,9 +6,17 @@ class Spn_View
 		
 	}
 	
-	public function display($m,$c,$a)
+	public function display($m,$c,$a,$formAdmin=false)
 	{
-		require_once APP_PATH .'/app/'.$m.'/v/'.$c.'/'.$a.'.php';
+		
+		if (!$formAdmin)
+		{
+			require_once APP_PATH .'/'.$m.'/v/'.$c.'/'.$a.'.php';
+		}
+		else 
+		{
+			require_once ADMIN_APP_PATH .'/'.$m.'/v/'.$c.'/'.$a.'.php';
+		}
 	}
 	
 	public function url(array $url)

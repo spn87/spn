@@ -7,9 +7,9 @@ class Spn_Mvc
 	private $_c; //Controller
 	private $_a; //Action
 	
-	public function __construct()
+	public function __construct($forAdmin=false)
 	{
-		$this->determineMvc();
+		$this->determineMvc($forAdmin);
 	}
 	
 	public function content()
@@ -18,7 +18,7 @@ class Spn_Mvc
 		echo $this->_m . ' - ' .$this->_c . ' - ' . $this->_a;
 	}
 	
-	public function determineMvc()
+	public function determineMvc($forAdmin=false)
 	{
 		//Determine module
 		if ($this->_rq('m') == '')
@@ -40,7 +40,10 @@ class Spn_Mvc
 			
 		//Load controller		
 		require_once 'Spn/Controller.php';
-		require_once APP_PATH.'/app/'.$this->_m.'/c/'.$this->_c.'.php';		
+		if (!$forAdmin)
+			require_once APP_PATH.'/'.$this->_m.'/c/'.$this->_c.'.php';
+		else 
+			require_once ADMIN_APP_PATH.'/'.$this->_m.'/c/'.$this->_c.'.php';
 		$className = $this->_m .'_' . $this->_c;
 		
 		$controller = new $className($this->_m,$this->_c,$this->_a);
@@ -53,7 +56,7 @@ class Spn_Mvc
 		//Execute action
 		$controller->$a();
 		
-		$this->display();		
+		$this->display($forAdmin);		
 	}
 	
 	private function _rq($rq)
@@ -66,25 +69,28 @@ class Spn_Mvc
 		return $_GET[$rq];
 	}
 	
-	public function display()
-	{	
+	public function display($forAdmin=false)
+	{
+		$path = APP_PATH;
+		if ($forAdmin) $path = ADMIN_APP_PATH;	
 		//Hide layout
 		if ($this->c->_useLayout)
 		{	
-			if (!file_exists(APP_PATH."/layouts/default.php"))
+			if (!file_exists($path."/../layouts/default.php"))
 				throw new Exception("Layout not set");
 			else
 			if ($this->c->layout == '')
-				require_once "layouts/default.php";
+			{
+				require_once $path."/../layouts/default.php";
+			}	
 			else
 			{
-				
-				require_once APP_PATH.'/'.$this->c->layout;
+				require_once $path.'/../'.$this->c->layout;
 			}
 		} else
 		{
 			if ($this->c->_useView)
-				echo $this->getController()->display();
+				echo $this->getController()->display($forAdmin);
 		}
 	}
 	

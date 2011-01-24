@@ -1,8 +1,9 @@
 @CHARSET "UTF-8";
+body {background: #FFF}
 body, td{font-size:13px; font-family: Tahoma, Geneva, sans-serif;line-height:1.125em;}
 div.left {float: left; width: 250px; border: 0px solid green;}
 div.left div { width: 100%; margin: 10px; border:1px dashed orange; min-height: 500px;}
-div.right {float: left; width: 700px; border:0px solid red;}
+div.right {float: left; width: 650px; border:0px solid red;}
 div.right > div {margin:10px; width: 100%;}
 
 table th{background: #ccc;}
@@ -10,3 +11,72 @@ table td {border:1px solid #c3c3c3; padding-left: 10px;}
 h2 {border-bottom: 1px solid #d4d4d4; margin:0px 0px 15px 0px; padding-bottom:5px;}
 
 table td.action {text-align:center;}
+
+table.admin-table
+{
+	width:100%;
+}
+table.admin-table th
+{
+	border-top:4px solid #AABCFE;
+	border-bottom:1px solid #FFFFFF;
+	background:#B9C9FE;
+	text-align:left;
+}
+table.admin-table th:last-child
+{
+	text-align:center;
+}
+table.admin-table tr:nth-child(odd) td
+{
+	border:0px;
+	border-bottom:1px solid #eee;
+	background:#FFF;
+}
+table.admin-table tr:nth-child(even) td
+{
+	border:0px;
+	border-bottom:1px solid #eee;
+	background:#E8FFFF;
+}
+table.admin-table tr:hover td
+{
+	border:0px;
+	border-bottom:1px solid #fff;
+	background:#D0DAFD;
+}
+ a
+{
+	color:#666699;
+}
+ a:hover
+{
+	color:red;
+}
+h2 {color:#C30000;}
+
+ul.spn_menu_admin
+{
+	margin-left:15px;
+	padding:0px;	
+}
+ul.spn_menu_admin span:first-child
+{
+	font-weight:bold;
+	margin-bottom:5px;
+	display:block;
+}
+ul.spn_menu_admin li,ul.login-info li
+{
+	list-style: none;	
+}
+ul.spn_menu_admin li
+{
+	background:url("../../images/arrow.gif") 0px 5px no-repeat;
+	padding-left:20px;
+	margin-left:10px;
+}
+ul.login-info
+{
+	margin-left:-30px;
+}

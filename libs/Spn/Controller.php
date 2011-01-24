@@ -51,9 +51,9 @@ class Spn_Controller
 		return $_GET[$rq];
 	}
 	
-	public function display()
+	public function display($forAdmin=false)
 	{
-		$this->view->display($this->_m,$this->_c,$this->_a);
+		$this->view->display($this->_m,$this->_c,$this->_a,$forAdmin);
 	}
 	
 	public function setLayout($file)
@@ -111,7 +111,7 @@ class Spn_Controller
 	protected function loadAdminModel($model, $module)
 	{
 		require_once 'Spn/Model.php';
-		$path = APP_PATH .'/'.ADMIN_DIR.'/app/'.$module.'/m/'.$module.'_'.$model.'.php';
+		$path = ADMIN_APP_PATH.'/'.$module.'/m/'.$module.'_'.$model.'.php';
 		
 		require_once $path;
 		$className = strtoupper(substr($module,0,1)) . substr($module,1).strtoupper(substr($model,0,1)) . substr($model,1) .'_Model';
@@ -125,10 +125,13 @@ class Spn_Controller
 	 */
 	protected function getDir($model)
 	{
+		$path = (FROM_ADMIN) ? ADMIN_APP_PATH:APP_PATH;
 		if (is_null($model))
-			return APP_PATH . '/app/'.$this->_m ;
+			$path = $path. '/'.$this->_m ;
 		else
-			return APP_PATH . '/app/'.$model ;
+			$path = $path . '/'.$model ;
+		
+		return $path;
 	}
 }
 

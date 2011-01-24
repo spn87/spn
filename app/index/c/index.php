@@ -3,9 +3,12 @@
 	{
 		public function init()
 		{
-			$this->setLayout("layouts/home.php");
+			
 		}
 		public function index()
+		{
+		}
+		public function bookform()
 		{
 			
 		}

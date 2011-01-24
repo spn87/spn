@@ -1,9 +1,9 @@
 <html>
 	<head>
-		<title>Photo Management Admin</title>
+		<title><?php echo SITE_NAME?> - Admin</title>
 		<link rel="stylesheet" type="text/css" href="css/admin.css" />
-		<link rel="stylesheet" type="text/css" href="../css/global.css" />
-		<link rel="stylesheet" type="text/css" href="../css/global.css" />
+		<link rel="stylesheet" type="text/css" href="css/global.css" />
+		<link rel="stylesheet" type="text/css" href="css/global.css" />
 		<style>
 		.ui-datepicker {background:#4d4d4d; font-size:10px;}
 		.ui-icon-circle-triangle-w{color:#fff; float:left; padding:5px; cursor: pointer} 
@@ -23,13 +23,7 @@
 					<ul class="spn_menu_admin">
 					<li><a href="index.php">Home</a></li>
 					<li>
-						<a href="?m=room">Rooms</a>						
-					</li>
-					<li>
-						<a href="?m=rooma">Room availability</a>
-					</li>
-					<li>
-						<a href="?m=roomtype">Room type</a>
+						<a href="?m=c">Content</a>						
 					</li>					
 				</ul>
 				<ul>
@@ -41,7 +35,9 @@
 			</div>
 			<div class="right"><div>
 				<div style="margin:0 10px 0 10px; border:0px dashed red; width: 100%; min-height:500px; padding-left:20px;">
-					<?php $this->getController()->display();?>
+					<?php 
+					
+					$this->getController()->display(true);?>
 				</div>			
 			</div></div>
 			<div style="clear:both;"></div>

@@ -1,8 +1,8 @@
 <?php
 	DEFINE("HOST","localhost");
 	DEFINE("USER","souphorn");
-	DEFINE("PASSWORD","Zph0PSJx");
-	DEFINE("DB","hsh");
+	DEFINE("PASSWORD","souphorn");
+	DEFINE("DB","spn");
 	DEFINE('TB_PREFIX','hsh_');
 	
 	//Authentication
@@ -14,7 +14,9 @@
 	DEFINE('SESS_AD_PASSWORD', 'spn_ad_pwd');
 	DEFINE('SESS_AD_NAME','spn_ad_name');
 	
-	DEFINE('ADMIN_DIR','public/spn_admin');
+	DEFINE('ADMIN_APP_PATH',dirname(__FILE__).'/../admin/app');
+	DEFINE('APP_PATH',dirname(__FILE__).'/../app');
 	
-	DEFINE('USE_DB',0);
+	DEFINE('USE_DB',1);
+	DEFINE('SITE_NAME','Spn');
 ?>

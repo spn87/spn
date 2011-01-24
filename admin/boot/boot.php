@@ -1,17 +1,13 @@
 <?php
-	require_once dirname(__FILE__)."/../../../conf/conf.php";
+	DEFINE('FROM_ADMIN',1);
 	
 	//Set include path
-	set_include_path(get_include_path() . PATH_SEPARATOR . (dirname(__FILE__) .'/../../../libs') );
-
-	DEFINE('APP_PATH',dirname(__FILE__).'/..');	
-	
-	DEFINE('ROOT', dirname(__FILE__) . "/../..");
+	set_include_path(get_include_path() . PATH_SEPARATOR . (APP_PATH .'/../libs') );
 	
 	//Create new DB Object
 	if (USE_DB):
-	require_once "Spn/Db.php";
-	$db = new SPN_DB();
+		require_once "Spn/Db.php";
+		$db = new SPN_DB();
 	endif;
 	
 	//Start session
@@ -37,6 +33,6 @@
 	
 	//Execute MVC
 	require_once "Spn/Mvc.php";
-	$mvc = new Spn_Mvc();
+	$mvc = new Spn_Mvc(true);
 	
 ?>
