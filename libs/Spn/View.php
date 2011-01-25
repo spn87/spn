@@ -20,7 +20,7 @@ class Spn_View
 		}
 	}
 	
-	public function url(array $url)
+	public function url(array $url = array())
 	{
 		$urlStr = '';
 		foreach ($url as $k=>$v)
