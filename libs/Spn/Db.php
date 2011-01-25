@@ -7,7 +7,8 @@ class Spn_Db
 	function __construct()
 	{
 		$this->db = mysql_connect(HOST,USER,PASSWORD);
-		mysql_select_db(DB);	
+		mysql_select_db(DB,$this->db);
+		mysql_query("set names 'utf8'",$this->db);
 	}
 	
 	public function save(array $data)
