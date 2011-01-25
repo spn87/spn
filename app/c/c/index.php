@@ -16,12 +16,22 @@ class C_Index extends Spn_Controller
 	}
 	public function v()
 	{
+		
 		$url = $this->_rq("url");
 		
 		$m = $this->loadModel("index");
 		$row = $m->fetchRow("url='$url'");
 		
-		$this->view->row = $row;
+		if ($row)
+		{
+			$this->view->row = $row;
+		}
+		else 
+		{
+			$this->hideView();	
+			header('HTTP/1.0 404 Not Found');
+			exit();
+		}
 	}
 }
 ?>

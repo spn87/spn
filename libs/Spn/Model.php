@@ -38,7 +38,7 @@ class Spn_Model
 		$rst = $this->_db->fetchAll($query,'',$type);
 		if (count($rst) > 0)
 			return $rst[0];
-		return new stdClass();
+		return null;
 	}
 	
 	/**
