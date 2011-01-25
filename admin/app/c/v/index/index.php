@@ -12,4 +12,5 @@
 
 ?>
 <h2>Content Management</h2>
+<a href="?m=c&a=add">Add new</a>
 <?php echo $this->table;?>

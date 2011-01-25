@@ -41,19 +41,21 @@ class Spn_Controller
 		$this->_useView = false;
 	}
 	
-	private function _rq($rq)
+	protected function _rq($rq)
 	{
 		//Return
 		$r = '';
-		if (!isset($_GET[$rq]))
+		if (!isset($_REQUEST[$rq]))
 			return $r;
 		
-		return $_GET[$rq];
+		return $_REQUEST[$rq];
 	}
 	
 	public function display($forAdmin=false)
 	{
-		$this->view->display($this->_m,$this->_c,$this->_a,$forAdmin);
+		if ($this->_useView)
+			$this->view->display($this->_m,$this->_c,$this->_a,$forAdmin);
+		
 	}
 	
 	public function setLayout($file)
