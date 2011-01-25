@@ -6,3 +6,4 @@
 #RewriteRule ^.*$ - [NC,L]
 #RewriteRule !^public/ public/index.php
 #RewriteRule .* public/index.php
+RewriteRule ^c/(.*) index.php?a=v&url=$1
