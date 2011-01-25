@@ -76,6 +76,7 @@ class Spn_Form
 		$formHtml = "";
 		
 		$desc = $this->filterField($desc);
+		
 		foreach ($desc as $field)
 		{
 			//Get array infor from provide array
@@ -95,9 +96,11 @@ class Spn_Form
 			}
 			
 			//Getting label
-			$label = ($labelControl != "") ? $labelControl : $field['Field'];
+			$label = ($labelControl != "") ? $labelControl : $field['Field'];			
+			$valueControl = ($valueControl !="")?$valueControl:(isset($data[$field['Field']])) ? $data[$field['Field']]:"";
 			
 			$element = new Spn_Form_Element($field, $label,$params,$valueControl);
+			
 			$formHtml .= $element->getElement();
 			
 		}
