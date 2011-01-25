@@ -1,4 +1,9 @@
-
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title><?php echo SITE_NAME?> - <?php echo $this->getTitle()?></title>
+	</head>
+	<body>
         <!-- content -->
         <div id="content">
         <div class="wrapper">
@@ -20,4 +25,6 @@
 		        </div>
 	        </div>
         </div>
-        </div>        
+        </div>
+	</body>        
+</html>
