@@ -42,6 +42,8 @@ class Spn_View
 		$c = "";
 		$a = "";
 		
+		$tmpParam = array();
+		
 		foreach ($params as $k=>$v)
 		{
 			if ($k == "m") $m = $v;
@@ -51,19 +53,21 @@ class Spn_View
 			if ($k == "a") $a = $v;
 			else 
 			{
-				$url .= "&$k=$v";
+				$tmpParam[] = "$k=$v";
 			}
 		}
 		if (isset($_GET['a']) && $_GET['a'] != "" && $a == "") $a = $_GET['a'];
 		if (isset($_GET['c']) && $_GET['c'] != "" && $c == "") $c = $_GET['c'];
 		if (isset($_GET['m']) && $_GET['m'] != "" && $m == "") $m = $_GET['m'];
 		
+		$url = implode("&", $tmpParam);
 		if ($a != "index" && $a != "")
-			$url = "a=$a&".$url;
+			$url = "a=$a".($url!="" ? "&$url":"");
 		if ($c != "index" && $c != "")
-			$url = "c=$c&".$url;
+			$url = "c=$c".($url!="" ? "&$url":"");
 		if ($m != "index" && $m != "")
-			$url = "m=$m&".$url;  
+			$url = "m=$m".($url!="" ? "&$url":"");
+		  
 		return "?".$url;
 	}
 }
