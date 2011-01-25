@@ -14,6 +14,7 @@
 		</style>
 		<script src="../includes/js/jquery.js"></script>
 		<script src="../includes/js/jquery-ui-1.7.2.custom.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	</head>
 	<body>
 		<div style="width: 950px; min-height:500px; border:0px solid red; margin: 0px auto;">

@@ -10,11 +10,15 @@
 
 require_once "Spn/Table.php";
 require_once "Spn/Form.php";
+require_once "Spn/Form/Element.php";
 class C_Index extends Spn_Controller
 {
 	private $fields = array(array("title"=>"Title"));
+	private $addFields = array(array("title"=>"Title"),
+						array("url"=>"Url"),
+						array("content"=>"Content","params"=>array(Spn_Form_Element::TEXT_AREA)),);
 	public function index()
-	{
+	{	
 		$m = $this->loadModel("index");
 		$data = $m->fetchAll("",Spn_Db::ASSOC);
 		
@@ -28,7 +32,7 @@ class C_Index extends Spn_Controller
 	{
 		$form = new Spn_Form("contents");
 		
-		$this->view->form = $form->getAddForm($this->fields);
+		$this->view->form = $form->getAddForm($this->addFields);
 	}
 	
 	public function save()
@@ -36,6 +40,10 @@ class C_Index extends Spn_Controller
 		$this->hideView();
 		$this->hideLayout();
 		$data = $_POST;
+		//$data["url"] = urlencode($data["url"]);
+		
+		//print_r($data);
+		//exit();
 		$m = $this->loadModel("index");
 		$m->bind($data);
 		$id = $this->_rq("id");
@@ -57,12 +65,8 @@ class C_Index extends Spn_Controller
 	
 	public function edit()
 	{
-		$fields = array();
-		$fieldExtra = array(array("url"=>"Url"));
-		foreach ($this->fields as $f) $fields[] = $f;
-		foreach ($fieldExtra as $f) $fields[] = $f;
 		$form = new Spn_Form("contents");
-		$this->view->form = $form->getEditForm($this->_rq("id"), $fields);
+		$this->view->form = $form->getEditForm($this->_rq("id"), $this->addFields);
 	}
 }
 
