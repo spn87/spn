@@ -20,10 +20,12 @@ class Spn_Model
 	 * @param string $where
 	 * @return Record
 	 */
-	public function fetchAll($where = "", $type = Spn_Db::OBJ)
+	public function fetchAll($where = "", $type = Spn_Db::OBJ, $recNum=0)
 	{
 		if ($this->_name == "") return array();
 		$query = "SELECT * FROM ".$this->_name. (($where != "") ? " WHERE $where":"");
+		if ($recNum >0)
+			$query .= " LIMIT 0, $recNum";
 		
 		$rst = $this->_db->fetchAll($query, '',$type);
 		
