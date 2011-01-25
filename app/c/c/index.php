@@ -20,15 +20,17 @@ class C_Index extends Spn_Controller
 		$url = $this->_rq("url");
 		
 		$m = $this->loadModel("index");
-		$row = $m->fetchRow("url='$url'");
+		$row = $m->fetchRow("url='".$url."'");
 		
 		if ($row)
 		{
+			$this->view->__title = $row->title;
 			$this->view->row = $row;
 		}
 		else 
 		{
 			$this->hideView();	
+			require APP_PATH.'/../includes/404.php';
 			header('HTTP/1.0 404 Not Found');
 			exit();
 		}
