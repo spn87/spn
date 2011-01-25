@@ -1,6 +1,7 @@
 <?php
 class Spn_View
 {	
+	public $__title = "";
 	public function __construct()
 	{
 		

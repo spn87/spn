@@ -98,5 +98,10 @@ class Spn_Mvc
 	{		
 		return $this->c;
 	}
+	
+	public function getTitle()
+	{
+		return $this->c->view->__title;
+	}
 }
 ?>
