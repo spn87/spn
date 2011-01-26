@@ -14,9 +14,24 @@ require_once "Spn/Form/Element.php";
 class C_Index extends Spn_Controller
 {
 	private $fields = array(array("title"=>"Title"));
-	private $addFields = array(array("title"=>"Title"),
+	private $addFields = array();
+	public function init()
+	{
+		//Getting users
+		require_once "Spn/Array.php";
+		$userObj = new Spn_User();
+		$allUser = $userObj->listAll();
+		
+		$users = Spn_Array::extract($allUser, "name");
+		Spn_Array::fillKeys($users, $allUser, "id");
+		
+		$this->addFields = array(array("title"=>"Title"),
 						array("url"=>"Url"),
-						array("content"=>"Content","params"=>array(Spn_Form_Element::TEXT_AREA)),);
+						array("content"=>"Content","params"=>array(Spn_Form_Element::TEXT_AREA)),
+						array("created_by"=>"Created by","params"=>array(Spn_Form_Element::DROP_DOWN_LIST,
+							Spn_Form_Element::D_DATA=>$users))
+						);
+	}
 	public function index()
 	{	
 		$m = $this->loadModel("index");
