@@ -101,7 +101,7 @@ class Spn_Form_Element
 		
 		foreach ($this->dData as $k=>$v)
 		{
-			$option .= "<option value='$k'>".$v."</option>";
+			$option .= "<option value='$k' ".(($this->value==$k) ? "selected" : "").">".$v."</option>";
 		}
 		$html ="
 		<tr><td>$this->label</td><td><select name='".$this->field["Field"]."' id='".$this->field["Field"]."'>$option</select></td></tr>
