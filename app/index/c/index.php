@@ -8,7 +8,7 @@
 		public function index()
 		{
 			$m = $this->loadAdminModel("index", "c");
-			$contents = $m->fetchAll('',Spn_Db::ASSOC,2);
+			$contents = $m->fetchAll("id!=0 ORDER BY id desc",Spn_Db::ASSOC,2);
 			
 			$this->view->contents = $contents;
 		}

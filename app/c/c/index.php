@@ -20,7 +20,8 @@ class C_Index extends Spn_Controller
 		$url = $this->_rq("url");
 		
 		$m = $this->loadModel("index");
-		$row = $m->fetchRow("url='".$url."'");
+		
+		$row = $m->baseUrlContent($url);
 		
 		if ($row)
 		{
