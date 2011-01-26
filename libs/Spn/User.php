@@ -80,5 +80,14 @@ class Spn_User
 		return false;
 		
 	}
+	
+	public function listAll()
+	{
+		global $db;
+		$table = TB_PREFIX.'users';
+		$query = "SELECT * FROM $table";
+		
+		return $db->fetchAll($query, "", Spn_Db::ASSOC);
+	}
 }
 ?>
