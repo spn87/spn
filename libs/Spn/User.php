@@ -2,9 +2,10 @@
 class Spn_User
 {
 	private $isVerified = false;
+	public static $_table = '';
 	function __construct()
 	{
-		
+		self::$_table = TB_PREFIX.'users';
 	}
 	
 	/**
@@ -18,7 +19,7 @@ class Spn_User
 	function login($username, $password, $isAdmin = false)
 	{
 		global $db;
-		$table = TB_PREFIX.'users';
+		$table = self::$_table;
 		$query = "SELECT * FROM $table " . " WHERE username='$username' and pwd=password('$password')". (($isAdmin) ? ' AND su=1':'');
 		
 		$r = $db->fetchAll($query);
@@ -55,7 +56,7 @@ class Spn_User
 	{
 		
 		global $db;
-		$table = TB_PREFIX.'users';
+		$table = self::$_table ;
 		if (!$isAdmin)
 		{
 			if (!isset($_SESSION[SESS_USERNAME])) return false;
@@ -84,7 +85,7 @@ class Spn_User
 	public function listAll()
 	{
 		global $db;
-		$table = TB_PREFIX.'users';
+		$table = self::$_table ;
 		$query = "SELECT * FROM $table";
 		
 		return $db->fetchAll($query, "", Spn_Db::ASSOC);
