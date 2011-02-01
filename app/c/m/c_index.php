@@ -24,9 +24,11 @@ class CIndex_Model extends Spn_Model
 		return null;
 	}
 	
-	public function getContents()
+	public function getContents($num=0)
 	{
-		$query = "SELECT c.*,u.name AS creator FROM $this->_name AS c INNER JOIN ".Spn_User::$_table." AS u ON c.created_by=u.id LIMIT $this->limitStart,$this->limitEnd";
+		$start = $this->limitStart;
+		$end = ($num ==0) ? $this->limitEnd:$num;
+		$query = "SELECT c.*,u.name AS creator FROM $this->_name AS c INNER JOIN ".Spn_User::$_table." AS u ON c.created_by=u.id LIMIT $start,$end";
 		
 		$rows = $this->_db->fetchAll($query,"",Spn_Db::ASSOC);
 		if (count($rows)>0)

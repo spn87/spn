@@ -8,7 +8,7 @@
 		public function index()
 		{
 			$m = $this->loadModel("index", "c");
-			$contents = $m->getContents();
+			$contents = $m->getContents(10);
 			
 			$this->view->contents = $contents;
 		}
