@@ -74,10 +74,10 @@ class Spn_Form_Element
 			return $this->$func();
 		}
 		$html ="
-			<div>
-				<label>".$this->label."</label>
-				<span><input type='text' name='".$this->field['Field']."' id='".$this->field['Field']."' class='".($this->isRequire ? "required":"")."' value='".$this->value."'/></span>
-			</div>
+			<tr>
+				<td><label>".$this->label."</label></td>
+				<td><span><input type='text' name='".$this->field['Field']."' id='".$this->field['Field']."' class='".($this->isRequire ? "required":"")."' value='".$this->value."'/></span></td>
+			</tr>
 			";
 		
 		return $html;
@@ -86,10 +86,10 @@ class Spn_Form_Element
 	private function getTextAreaElement()
 	{
 		$html ="
-			<div>
-				<label>".$this->label."</label>
-				<span><textarea  name='".$this->field['Field']."' id='".$this->field['Field']."' class='".($this->isRequire ? "required":"")."' cols='50' rows='7'>$this->value</textarea></span>
-			</div>
+			<tr>
+				<td><label>".$this->label."</label></td>
+				<td><span><textarea  name='".$this->field['Field']."' id='".$this->field['Field']."' class='".($this->isRequire ? "required":"")."' cols='50' rows='7'>$this->value</textarea></span></td>
+			</tr>
 			";
 		
 		return $html;
@@ -101,10 +101,10 @@ class Spn_Form_Element
 		
 		foreach ($this->dData as $k=>$v)
 		{
-			$option .= "<option value='$k'>".$v."</option>";
+			$option .= "<option value='$k' ".(($this->value==$k) ? "selected" : "").">".$v."</option>";
 		}
 		$html ="
-		<select name='".$this->field["Field"]."' id='".$this->field["Field"]."'>
+		<tr><td>$this->label</td><td><select name='".$this->field["Field"]."' id='".$this->field["Field"]."'>$option</select></td></tr>
 		$option
 		</select>
 		";

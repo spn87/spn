@@ -24,8 +24,12 @@
 					<ul class="spn_menu_admin">
 					<li><a href="index.php">Home</a></li>
 					<li>
-						<a href="?m=c">Content</a>						
-					</li>					
+						<a href="?m=c">Contents</a>
+						<ul>
+							<li><a href="?m=c">Content</a></li>
+							<li><a href="?m=cat">Category</a></li>
+						</ul>						
+					</li>		
 				</ul>
 				<ul>
 					<li>Welcome, <?php echo $_SESSION[SESS_AD_NAME]?></li>

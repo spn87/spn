@@ -106,10 +106,12 @@ class Spn_Form
 		}
 		
 		$formHtml .='
-			<div>				
-				<span><input type="submit" value="Submit"/></span> '.$this->getCancelButton().'
-			</div>
+			<tr>				
+				<td colspan=2><span><input type="submit" value="Submit"/></span> '.$this->getCancelButton().'</td>
+			</tr>
 		';
+		
+		$formHtml = "<table border='0'>".$formHtml."</table>";
 		
 		return $formHtml;
 	}

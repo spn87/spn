@@ -7,8 +7,8 @@
 		}
 		public function index()
 		{
-			$m = $this->loadAdminModel("index", "c");
-			$contents = $m->fetchAll('',Spn_Db::ASSOC,2);
+			$m = $this->loadModel("index", "c");
+			$contents = $m->getContents(10);
 			
 			$this->view->contents = $contents;
 		}

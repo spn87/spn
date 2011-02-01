@@ -10,7 +10,10 @@ class Spn_Db
 		mysql_select_db(DB,$this->db);
 		mysql_query("set names 'utf8'",$this->db);
 	}
-	
+	public static function e($v)
+	{
+		return mysql_escape_string($v);
+	}
 	public function save(array $data)
 	{
 		

@@ -13,6 +13,7 @@ $row = $this->row;
 ?>
 
 <h1><?php echo $row->title;?></h1>
+<div style="font-size:small;"><span><?php echo $row->creator;?></span></div>
 <div>
 <?php echo $row->content;?>
 </div>

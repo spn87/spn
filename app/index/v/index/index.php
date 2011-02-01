@@ -5,4 +5,3 @@
 <div style="border-bottom:1px dashed #ccc;">&nbsp;</div>
 <?php endforeach;?>
 </div>
-<?php phpinfo();?>
